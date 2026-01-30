@@ -17,7 +17,64 @@ STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
 
+```java
+import java.util.Scanner;
+
+public class CaesarCipher {
+
+  String encode(String plainText, int key) {
+    char[] cipherTextArray = plainText.toCharArray();
+    int len = cipherTextArray.length;
+     for (int i = 0 ; i < len ; i++) {
+       char letter = cipherTextArray[i];
+       if(Character.isLowerCase(letter))
+          cipherTextArray[i] = (char)('a' + ((letter - 'a' + key) % 26));
+       else if (Character.isUpperCase(letter))
+          cipherTextArray[i] = (char)('A' + ((letter - 'A' + key) % 26));
+        else
+          continue;
+     } 
+     return new String(cipherTextArray);
+  }
+
+  String decode(String cipherText, int key) {
+      char[] plainTextArray = cipherText.toCharArray();
+      int len = plainTextArray.length;
+      for (int i = 0 ; i < len ; i++) {
+        char letter = plainTextArray[i];
+        if(Character.isLowerCase(letter))
+            plainTextArray[i] = (char)('a' + (letter - 'a' - key + 26) % 26);  
+        else if (Character.isUpperCase(letter))
+            plainTextArray[i] = (char)('A' + (letter - 'A' - key+ 26) % 26);
+        else  
+          continue;
+      }
+      return new String(plainTextArray);
+  }
+
+  public static void main(String args[]) {
+      String plainText, cipherText;
+      int key = 1;
+      Scanner sc = new Scanner(System.in);
+      System.out.print("Enter the plain text to encrypt : ");
+      plainText = sc.nextLine();
+      System.out.print("Enter the key : ");
+      key = sc.nextInt();
+      CaesarCipher ccObj = new CaesarCipher();
+      cipherText = ccObj.encode(plainText, key);
+      System.out.println("Encrypted text : " + cipherText);
+      if (plainText.equals(ccObj.decode(cipherText, key))) {
+        System.out.println("Decode Successful\nDecoded Text : " + plainText);
+      } else {
+        System.out.println("Decode Failed\n");
+      }
+      System.out.println("Implementation of CaesarCipher in java is done");
+      sc.close();
+  }
+}
+```
 ## OUTPUT:
+![alt text](image.png)
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
