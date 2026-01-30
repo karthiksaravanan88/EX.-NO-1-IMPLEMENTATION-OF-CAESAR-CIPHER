@@ -74,7 +74,8 @@ public class CaesarCipher {
 }
 ```
 ## OUTPUT:
-![alt text](image.png)
+<img width="822" height="643" alt="image" src="https://github.com/user-attachments/assets/9e615df8-686a-4186-a9c4-256bab86fe84" />
+
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
